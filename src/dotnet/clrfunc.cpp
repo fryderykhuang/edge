@@ -186,11 +186,11 @@ v8::Local<v8::Value> ClrFunc::MarshalCLRToV8(System::Object^ netdata)
     }
     else if (type == System::Int64::typeid)
     {
-        jsdata = Nan::New<v8::Number>(((System::IConvertible^)netdata)->ToDouble(nullptr));
+        jsdata = stringCLR2V8(netdata->ToString());
     }
     else if (type == double::typeid)
     {
-        jsdata = Nan::New<v8::Number>((double)netdata);
+        jsdata = stringCLR2V8(netdata->ToString());
     }
     else if (type == float::typeid)
     {
